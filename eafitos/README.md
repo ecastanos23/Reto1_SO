@@ -1,6 +1,6 @@
 # EAFITos: Shell Educativa Personalizada
 
-# Integrantes:
+# Integrantes y Porcentajes **:
 - Emmanuel Castaño
 - Luis Miguel Mira
 - Nicolás Reyes
