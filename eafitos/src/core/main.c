@@ -5,8 +5,7 @@ int main() {
     printf("------------------------------------------\n");
     printf("   Bienvenido a EAFITos - Shell v1.0      \n");
     printf("------------------------------------------\n");
-    
-    // Función loop_shell();
-    
+    //Función de shell_loop
+    shell_loop();
     return 0;
 }
