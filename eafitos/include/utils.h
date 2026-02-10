@@ -17,6 +17,9 @@ void err_exit_errno(const char *context, int code);
 int err_set_log_file(const char *path);
 void err_close_log(void);
 
+char *helpers_strdup_lower(const char *s);
+int helpers_contains_case_insensitive(const char *haystack, const char *needle);
+
 #define mm_malloc(sz) mm_malloc_impl((sz), __FILE__, __LINE__)
 #define mm_calloc(n, sz) mm_calloc_impl((n), (sz), __FILE__, __LINE__)
 #define mm_strdup(s) mm_strdup_impl((s), __FILE__, __LINE__)

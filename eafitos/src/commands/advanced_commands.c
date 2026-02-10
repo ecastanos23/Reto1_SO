@@ -67,30 +67,6 @@ int comando_renombrar(char **args) {
 }
 //uso: renombrar <original> <nuevo>
 
-static int contiene_ignorar_mayusculas(const char *linea, const char *texto) {
-	if (linea == NULL || texto == NULL || texto[0] == '\0') {
-		return 0;
-	}
-
-	size_t texto_len = strlen(texto);
-
-	for (size_t i = 0; linea[i] != '\0'; i++) {
-		size_t j = 0;
-		while (texto[j] != '\0' && linea[i + j] != '\0') {
-			unsigned char c1 = (unsigned char)linea[i + j];
-			unsigned char c2 = (unsigned char)texto[j];
-			if (tolower(c1) != tolower(c2)) {
-				break;
-			}
-			j++;
-		}
-		if (j == texto_len) {
-			return 1;
-		}
-	}
-
-	return 0;
-}
 
 int comando_buscar(char **args) {
 	if (args == NULL || args[1] == NULL || args[2] == NULL) {
@@ -131,7 +107,7 @@ int comando_buscar(char **args) {
 	int coincidencias = 0;
 
 	while (fgets(linea, sizeof(linea), archivo) != NULL) {
-		if (contiene_ignorar_mayusculas(linea, texto)) {
+		if (helpers_contains_case_insensitive(linea, texto)) {
 			printf("%d: %s", numero_linea, linea);
 			coincidencias++;
 		}
