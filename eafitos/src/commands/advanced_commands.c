@@ -17,3 +17,5 @@ int comando_crear(char **args) {
 	fclose(archivo);
 	return 0;
 }
+
+// crear un archivo con nombre distinto: cd /workspaces/Reto1_SO/eafitos touch REYES
