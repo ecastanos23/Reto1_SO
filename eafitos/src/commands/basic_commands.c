@@ -6,6 +6,7 @@
 #include <time.h>
 
 #include "commands.h"
+#include "utils.h"
 
 int cmd_listar(char **args) {
 	DIR *dir;
@@ -31,15 +32,18 @@ int cmd_listar(char **args) {
 int cmd_leer(char **args) {
     FILE *archivo;
     char buffer[1024];
+    char *ruta;
 
     if (args[1] == NULL) {
         fprintf(stderr, "leer: se requiere un argumento (nombre del archivo)\n");
         return 1;
     }
 
-    archivo = fopen(args[1], "r");
+    ruta = mm_strdup(args[1]);
+    archivo = fopen(ruta, "r");
     if (!archivo) {
-        fprintf(stderr, "leer: no se pudo abrir '%s': %s\n", args[1], strerror(errno));
+        fprintf(stderr, "leer: no se pudo abrir '%s': %s\n", ruta, strerror(errno));
+        mm_free(ruta);
         return 1;
     }
 
@@ -48,6 +52,7 @@ int cmd_leer(char **args) {
     }
 
     fclose(archivo);
+    mm_free(ruta);
     return 1;
 }
 
@@ -69,6 +74,9 @@ int cmd_tiempo(char **args) {
 int cmd_calc(char **args) {
     double num1, num2, resultado;
     char operador;
+    char *num1_str;
+    char *op_str;
+    char *num2_str;
 
     if (args[1] == NULL || args[2] == NULL || args[3] == NULL) {
         fprintf(stderr, "calc: uso: calc <num1> <operador> <num2>\n");
@@ -76,9 +84,13 @@ int cmd_calc(char **args) {
         return 1;
     }
 
-    num1 = atof(args[1]);
-    operador = args[2][0];
-    num2 = atof(args[3]);
+    num1_str = mm_strdup(args[1]);
+    op_str = mm_strdup(args[2]);
+    num2_str = mm_strdup(args[3]);
+
+    num1 = atof(num1_str);
+    operador = op_str[0];
+    num2 = atof(num2_str);
 
     switch (operador) {
         case '+':
@@ -93,6 +105,9 @@ int cmd_calc(char **args) {
         case '/':
             if (num2 == 0) {
                 fprintf(stderr, "calc: error: division por cero\n");
+                mm_free(num1_str);
+                mm_free(op_str);
+                mm_free(num2_str);
                 return 1;
             }
             resultado = num1 / num2;
@@ -100,10 +115,16 @@ int cmd_calc(char **args) {
         default:
             fprintf(stderr, "calc: operador '%c' no reconocido\n", operador);
             fprintf(stderr, "      operadores validos: + - * /\n");
+            mm_free(num1_str);
+            mm_free(op_str);
+            mm_free(num2_str);
             return 1;
     }
 
     printf("%.2f %c %.2f = %.2f\n", num1, operador, num2, resultado);
+    mm_free(num1_str);
+    mm_free(op_str);
+    mm_free(num2_str);
     return 1;
 }
 

@@ -11,13 +11,16 @@ int comando_crear(char **args) {
 		return 1;
 	}
 
-	FILE *archivo = fopen(args[1], "w");
+	char *ruta = mm_strdup(args[1]);
+	FILE *archivo = fopen(ruta, "w");
 	if (archivo == NULL) {
 		perror("crear");
+		mm_free(ruta);
 		return 1;
 	}
 
 	fclose(archivo);
+	mm_free(ruta);
 	return 1;
 }
 
@@ -29,10 +32,13 @@ int comando_eliminar(char **args) {
 		return 1;
 	}
 
-	if (remove(args[1]) != 0) {
+	char *ruta = mm_strdup(args[1]);
+	if (remove(ruta) != 0) {
 		perror("eliminar");
+		mm_free(ruta);
 		return 1;
 	}
+	mm_free(ruta);
 
 	return 1;
 }
@@ -102,20 +108,21 @@ int comando_buscar(char **args) {
 		return 1;
 	}
 
-	const char *archivo_nombre = args[last - 1];
-	char texto[1024];
-	texto[0] = '\0';
+	char *archivo_nombre = mm_strdup(args[last - 1]);
+	char *texto = mm_calloc(1, 1024);
 
 	for (int i = 1; i < last - 1; i++) {
 		if (i > 1) {
-			strncat(texto, " ", sizeof(texto) - strlen(texto) - 1);
+			strncat(texto, " ", 1024 - strlen(texto) - 1);
 		}
-		strncat(texto, args[i], sizeof(texto) - strlen(texto) - 1);
+		strncat(texto, args[i], 1024 - strlen(texto) - 1);
 	}
 
 	FILE *archivo = fopen(archivo_nombre, "r");
 	if (archivo == NULL) {
 		perror("buscar");
+		mm_free(texto);
+		mm_free(archivo_nombre);
 		return 1;
 	}
 
@@ -136,6 +143,8 @@ int comando_buscar(char **args) {
 	}
 
 	fclose(archivo);
+	mm_free(texto);
+	mm_free(archivo_nombre);
 	return 1;
 }
 //uso: buscar <texto> <archivo>
