@@ -1,13 +1,13 @@
 ## Roles
-#Líder: Emmanuel Castaño
+# Líder: Emmanuel Castaño
 Encargado de dirigir al equipo, dividir las tareas equitativamente y 
 estar al tanto del desarrollo del proyecto.
 
-#Desarrollador Principal: Luis Miguel Mira
+# Desarrollador Principal: Luis Miguel Mira
 Encargado del código principal y sus funcionalidades, es que el propone la primera versión del 
 código.
 
-#Tester: Nicolás Reyes
+# Tester: Nicolás Reyes
 Encargado de testear el código de cada comando antes de darlo por completado, además de realizar
 las respectivas correcciones qeu se tengan qeu hacer.
 
