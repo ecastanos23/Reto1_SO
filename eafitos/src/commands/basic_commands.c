@@ -106,3 +106,9 @@ int cmd_calc(char **args) {
     printf("%.2f %c %.2f = %.2f\n", num1, operador, num2, resultado);
     return 1;
 }
+
+int cmd_salir(char **args) {
+    (void)args;
+    printf("Saliendo de EAFITos... ¡Hasta pronto!\n");
+    return 0;
+}
