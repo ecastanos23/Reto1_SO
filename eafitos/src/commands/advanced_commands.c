@@ -1,3 +1,4 @@
+#include <ctype.h>
 #include <stdio.h>
 #include <string.h>
 
@@ -51,13 +52,59 @@ int comando_renombrar(char **args) {
 }
 //uso: renombrar <original> <nuevo>
 
+static int contiene_ignorar_mayusculas(const char *linea, const char *texto) {
+	if (linea == NULL || texto == NULL || texto[0] == '\0') {
+		return 0;
+	}
+
+	size_t texto_len = strlen(texto);
+
+	for (size_t i = 0; linea[i] != '\0'; i++) {
+		size_t j = 0;
+		while (texto[j] != '\0' && linea[i + j] != '\0') {
+			unsigned char c1 = (unsigned char)linea[i + j];
+			unsigned char c2 = (unsigned char)texto[j];
+			if (tolower(c1) != tolower(c2)) {
+				break;
+			}
+			j++;
+		}
+		if (j == texto_len) {
+			return 1;
+		}
+	}
+
+	return 0;
+}
+
 int comando_buscar(char **args) {
 	if (args == NULL || args[1] == NULL || args[2] == NULL) {
-		fprintf(stderr, "Uso: buscar <texto> <archivo>\n");
+		fprintf(stderr, "Uso: buscar <texto...> <archivo>\n");
 		return 1;
 	}
 
-	FILE *archivo = fopen(args[2], "r");
+	int last = 0;
+	while (args[last] != NULL) {
+		last++;
+	}
+
+	if (last < 3) {
+		fprintf(stderr, "Uso: buscar <texto...> <archivo>\n");
+		return 1;
+	}
+
+	const char *archivo_nombre = args[last - 1];
+	char texto[1024];
+	texto[0] = '\0';
+
+	for (int i = 1; i < last - 1; i++) {
+		if (i > 1) {
+			strncat(texto, " ", sizeof(texto) - strlen(texto) - 1);
+		}
+		strncat(texto, args[i], sizeof(texto) - strlen(texto) - 1);
+	}
+
+	FILE *archivo = fopen(archivo_nombre, "r");
 	if (archivo == NULL) {
 		perror("buscar");
 		return 1;
@@ -68,7 +115,7 @@ int comando_buscar(char **args) {
 	int coincidencias = 0;
 
 	while (fgets(linea, sizeof(linea), archivo) != NULL) {
-		if (strstr(linea, args[1]) != NULL) {
+		if (contiene_ignorar_mayusculas(linea, texto)) {
 			printf("%d: %s", numero_linea, linea);
 			coincidencias++;
 		}
@@ -76,7 +123,7 @@ int comando_buscar(char **args) {
 	}
 
 	if (coincidencias == 0) {
-		printf("No se encontraron coincidencias para '%s' en %s\n", args[1], args[2]);
+		printf("No se encontraron coincidencias para '%s' en %s\n", texto, archivo_nombre);
 	}
 
 	fclose(archivo);
