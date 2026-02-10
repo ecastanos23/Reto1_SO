@@ -11,6 +11,12 @@ void mm_free_impl(void *ptr, const char *file, int line);
 void mm_report(void);
 void mm_cleanup(void);
 
+void err_message(const char *context, const char *message);
+void err_errno(const char *context);
+void err_exit_errno(const char *context, int code);
+int err_set_log_file(const char *path);
+void err_close_log(void);
+
 #define mm_malloc(sz) mm_malloc_impl((sz), __FILE__, __LINE__)
 #define mm_calloc(n, sz) mm_calloc_impl((n), (sz), __FILE__, __LINE__)
 #define mm_strdup(s) mm_strdup_impl((s), __FILE__, __LINE__)

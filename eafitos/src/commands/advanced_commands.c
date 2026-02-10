@@ -14,7 +14,7 @@ int comando_crear(char **args) {
 	char *ruta = mm_strdup(args[1]);
 	FILE *archivo = fopen(ruta, "w");
 	if (archivo == NULL) {
-		perror("crear");
+		err_errno("crear");
 		mm_free(ruta);
 		return 1;
 	}
@@ -34,7 +34,7 @@ int comando_eliminar(char **args) {
 
 	char *ruta = mm_strdup(args[1]);
 	if (remove(ruta) != 0) {
-		perror("eliminar");
+		err_errno("eliminar");
 		mm_free(ruta);
 		return 1;
 	}
@@ -54,7 +54,7 @@ int comando_renombrar(char **args) {
 	char *destino = mm_strdup(args[2]);
 
 	if (rename(origen, destino) != 0) {
-		perror("renombrar");
+		err_errno("renombrar");
 		mm_free(origen);
 		mm_free(destino);
 		return 1;
@@ -120,7 +120,7 @@ int comando_buscar(char **args) {
 
 	FILE *archivo = fopen(archivo_nombre, "r");
 	if (archivo == NULL) {
-		perror("buscar");
+		err_errno("buscar");
 		mm_free(texto);
 		mm_free(archivo_nombre);
 		return 1;

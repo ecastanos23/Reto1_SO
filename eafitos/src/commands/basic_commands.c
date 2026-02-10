@@ -14,8 +14,8 @@ int cmd_listar(char **args) {
 
 	(void)args;
 	dir = opendir(".");
-	if (!dir) {
-		fprintf(stderr, "listar: no se pudo abrir el directorio actual: %s\n", strerror(errno));
+    if (!dir) {
+        err_errno("listar");
 		return 1;
 	}
 
@@ -42,7 +42,7 @@ int cmd_leer(char **args) {
     ruta = mm_strdup(args[1]);
     archivo = fopen(ruta, "r");
     if (!archivo) {
-        fprintf(stderr, "leer: no se pudo abrir '%s': %s\n", ruta, strerror(errno));
+        err_errno("leer");
         mm_free(ruta);
         return 1;
     }
