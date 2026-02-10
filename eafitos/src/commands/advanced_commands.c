@@ -15,7 +15,23 @@ int comando_crear(char **args) {
 	}
 
 	fclose(archivo);
-	return 0;
+	return 1;
 }
 
 // crear un archivo con nombre distinto: cd /workspaces/Reto1_SO/eafitos touch REYES
+
+int comando_eliminar(char **args) {
+	if (args == NULL || args[1] == NULL) {
+		fprintf(stderr, "Uso: eliminar <archivo>\n");
+		return 1;
+	}
+
+	if (remove(args[1]) != 0) {
+		perror("eliminar");
+		return 1;
+	}
+
+	return 1;
+}
+
+

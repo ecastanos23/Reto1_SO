@@ -10,6 +10,7 @@ Comando comandos[] = {
     {"tiempo", cmd_tiempo, "Muestra la fecha y hora actual"},
     {"calc", cmd_calc, "Calculadora basica (uso: calc num1 op num2)"},
     {"crear", comando_crear, "Crea un archivo vacio"},
+    {"eliminar", comando_eliminar, "Elimina un archivo"},
     {"ayuda", cmd_ayuda, "Muestra esta ayuda"},
     {"salir", cmd_salir, "Termina la shell EAFITos"},
     {NULL, NULL, NULL}
