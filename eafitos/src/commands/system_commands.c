@@ -11,7 +11,7 @@ Comando comandos[] = {
     {"calc", cmd_calc, "Calculadora basica (uso: calc num1 op num2)"},
     {"crear", comando_crear, "Crea un archivo vacio"},
     {"eliminar", comando_eliminar, "Elimina un archivo"},
-    {"mover", comando_mover, "Mueve un archivo"},
+    {"renombrar", comando_renombrar, "Renombra un archivo"},
     {"ayuda", cmd_ayuda, "Muestra esta ayuda"},
     {"salir", cmd_salir, "Termina la shell EAFITos"},
     {NULL, NULL, NULL}

@@ -35,14 +35,14 @@ int comando_eliminar(char **args) {
 }
 //uso: eliminar <archivo>
 
-int comando_mover(char **args) {
+int comando_renombrar(char **args) {
 	if (args == NULL || args[1] == NULL || args[2] == NULL) {
-		fprintf(stderr, "Uso: mover <origen> <destino>\n");
+		fprintf(stderr, "Uso: renombrar <origen> <destino>\n");
 		return 1;
 	}
 
 	if (rename(args[1], args[2]) != 0) {
-		perror("mover");
+		perror("renombrar");
 		return 1;
 	}
 
