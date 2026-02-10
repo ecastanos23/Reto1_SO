@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "shell.h" // Aquí estarán tus prototipos
+#include "utils.h"
 
 void shell_loop() {
     char linea[1024];
@@ -20,6 +21,6 @@ void shell_loop() {
             estado = ejecutar_comando(args); // Función que decidirá qué comando llamar
         }
 
-        free(args); // Liberar memoria para evitar leaks
+        mm_free(args); // Liberar memoria para evitar leaks
     } while (estado);
 }

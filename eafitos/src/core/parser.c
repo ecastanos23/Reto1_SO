@@ -1,18 +1,16 @@
 #include <string.h>
 #include <stdlib.h>
 
+#include "utils.h"
+
 #define MAX_ARGS 64
 #define DELIM " \t\r\n\a"
 
 char **parsear_linea(char *linea) {
     int bufsize = MAX_ARGS;
     int posicion = 0;
-    char **tokens = malloc(bufsize * sizeof(char*));
+    char **tokens = mm_malloc(bufsize * sizeof(char*));
     char *token;
-
-    if (!tokens) {
-        exit(EXIT_FAILURE); // Error de asignación de memoria
-    }
 
     token = strtok(linea, DELIM);
     while (token != NULL) {

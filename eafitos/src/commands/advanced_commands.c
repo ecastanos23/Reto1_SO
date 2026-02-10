@@ -3,6 +3,7 @@
 #include <string.h>
 
 #include "commands.h"
+#include "utils.h"
 
 int comando_crear(char **args) {
 	if (args == NULL || args[1] == NULL) {
@@ -43,10 +44,18 @@ int comando_renombrar(char **args) {
 		return 1;
 	}
 
-	if (rename(args[1], args[2]) != 0) {
+	char *origen = mm_strdup(args[1]);
+	char *destino = mm_strdup(args[2]);
+
+	if (rename(origen, destino) != 0) {
 		perror("renombrar");
+		mm_free(origen);
+		mm_free(destino);
 		return 1;
 	}
+
+	mm_free(origen);
+	mm_free(destino);
 
 	return 1;
 }
