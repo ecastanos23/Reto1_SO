@@ -12,6 +12,7 @@ Comando comandos[] = {
     {"crear", comando_crear, "Crea un archivo vacio"},
     {"eliminar", comando_eliminar, "Elimina un archivo"},
     {"renombrar", comando_renombrar, "Renombra un archivo"},
+    {"buscar", comando_buscar, "Busca texto en un archivo (uso: buscar <texto> <archivo>)"},
     {"ayuda", cmd_ayuda, "Muestra esta ayuda"},
     {"salir", cmd_salir, "Termina la shell EAFITos"},
     {NULL, NULL, NULL}

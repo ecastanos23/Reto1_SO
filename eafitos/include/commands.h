@@ -9,5 +9,6 @@ int cmd_salir(char **args);
 int comando_crear(char **args);
 int comando_eliminar(char **args);
 int comando_renombrar(char **args);
+int comando_buscar(char **args);
 
 #endif
