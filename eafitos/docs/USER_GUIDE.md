@@ -14,7 +14,7 @@ Busca una palabra dentro de un archivo sin importar mayúsculas/minúsculas.
 - **Eliminar**: `eliminar <nombre>` (Borra permanentemente el archivo).
 - **Renombrar**: `renombrar <viejo> <nuevo>` (Cambia el nombre o mueve el archivo).
 
-## 💡 Tips de Navegación
+## Tips de Navegación
 - Usa el comando `limpiar` si la pantalla está muy saturada.
 - El comando `calc` requiere espacios entre los números y el operador: `calc 5 + 10`.
 - Para salir de la shell, escribe `salir` o usa el atajo `Ctrl + D`.
