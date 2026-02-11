@@ -32,9 +32,9 @@ int cmd_ayuda(char **args);
 int cmd_salir(char **args);
 
 /* Avanzados (Elegidos por el equipo) */
-int cmd_crear(char **args);
-int cmd_eliminar(char **args);
-int cmd_limpiar(char **args);
-int cmd_directorio(char **args);
+int comando_crear(char **args);
+int comando_eliminar(char **args);
+int comando_renombrar(char **args);
+int comando_buscar(char **args);
 
 #endif
