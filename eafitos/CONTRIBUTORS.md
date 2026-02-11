@@ -19,7 +19,7 @@ Este documento detalla la distribución de responsabilidades, el impacto en el r
 | Integrante | Porcentaje de Participación | Estado de Tareas |
 | :--- | :---: | :--- |
 | Emmanuel Castaño | 33.3% | Completado |
-| Luis Miguel Mira | 33.3% | En Progreso |
+| Luis Miguel Mira | 33.3% | Completado |
 | Nicolas Reyes | 33.3% | Completado |
 
 > **Nota:** La participación se ha distribuido de manera equitativa para garantizar el cumplimiento de todos los módulos de la rúbrica.
