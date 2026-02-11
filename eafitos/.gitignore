@@ -1,3 +1,15 @@
+<<<<<<< HEAD
 eafitos/build/
 eafitos/EAFITos
 *.o
+=======
+# Ignorar el ejecutable principal
+eafitos/EAFITos
+
+# Ignorar todos los objetos de la carpeta build
+eafitos/build/**/*.o
+
+# Ignorar archivos temporales de editores
+*.swp
+.DS_Store
+>>>>>>> branch_comandos_basicos
