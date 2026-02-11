@@ -1,9 +1,3 @@
-# Ignorar el ejecutable principal
+eafitos/build/
 eafitos/EAFITos
-
-# Ignorar todos los objetos de la carpeta build
-eafitos/build/**/*.o
-
-# Ignorar archivos temporales de editores
-*.swp
-.DS_Store
+*.o
