@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "shell.h" // Aquí estarán tus prototipos
+#include "shell.h" 
 
 void shell_loop() {
     char linea[1024];
