@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-eafitos/build/
-eafitos/EAFITos
-*.o
-=======
 # Ignorar el ejecutable principal
 eafitos/EAFITos
 
@@ -12,4 +7,3 @@ eafitos/build/**/*.o
 # Ignorar archivos temporales de editores
 *.swp
 .DS_Store
->>>>>>> branch_comandos_basicos
