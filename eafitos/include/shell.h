@@ -18,7 +18,7 @@ typedef struct {
 } Comando;
 
 /* --- Prototipos del Núcleo (Core) --- */
-void loop_shell(void);
+void shell_loop(void);
 char **parsear_linea(char *linea); // Necesario para el parser.c
 int ejecutar_comando(char **args);
 
