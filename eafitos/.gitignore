@@ -1,5 +1,6 @@
-*.o\nbuild/\nshell_exec
-
+*.o
+build/
+shell_exec
 eafitos/build/
 eafitos/bin/
 eafitos/EAFITos
