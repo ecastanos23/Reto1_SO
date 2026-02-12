@@ -7,6 +7,19 @@
 
 // Comando que crea un archivo vacio en la ruta indicada.
 int comando_crear(char **args) {
+	if (args != NULL && args[1] != NULL && strcmp(args[1], "--help") == 0) {
+		printf("crear - Crea un archivo vacio en la ruta indicada.\n");
+		printf("\nDescripcion:\n");
+		printf("  Genera un archivo nuevo en la ruta indicada usando el nombre\n");
+		printf("  proporcionado. Es util para crear placeholders o archivos\n");
+		printf("  iniciales antes de editar su contenido.\n");
+		printf("\nUso:\n  crear <archivo> [--help]\n");
+		printf("\nNotas:\n");
+		printf("  - Si el archivo existe, su contenido se sobrescribe.\n");
+		printf("  - Requiere permisos de escritura en el directorio.\n");
+		return 1;
+	}
+
 	if (args == NULL || args[1] == NULL) {
 		fprintf(stderr, "Uso: crear <archivo>\n");
 		return 1;
@@ -29,6 +42,19 @@ int comando_crear(char **args) {
 
 // Comando que elimina un archivo existente.
 int comando_eliminar(char **args) {
+	if (args != NULL && args[1] != NULL && strcmp(args[1], "--help") == 0) {
+		printf("eliminar - Elimina un archivo existente.\n");
+		printf("\nDescripcion:\n");
+		printf("  Borra el archivo indicado del sistema de archivos. Esta accion\n");
+		printf("  es directa y no mueve el archivo a ningun lugar de recuperacion,\n");
+		printf("  por lo que debe usarse con cuidado.\n");
+		printf("\nUso:\n  eliminar <archivo> [--help]\n");
+		printf("\nNotas:\n");
+		printf("  - La eliminacion es permanente.\n");
+		printf("  - Requiere permisos sobre el archivo.\n");
+		return 1;
+	}
+
 	if (args == NULL || args[1] == NULL) {
 		fprintf(stderr, "Uso: eliminar <archivo>\n");
 		return 1;
@@ -48,6 +74,19 @@ int comando_eliminar(char **args) {
 
 // Comando que renombra un archivo de origen a destino.
 int comando_renombrar(char **args) {
+	if (args != NULL && args[1] != NULL && strcmp(args[1], "--help") == 0) {
+		printf("renombrar - Cambia el nombre de un archivo.\n");
+		printf("\nDescripcion:\n");
+		printf("  Renombra un archivo existente indicando un nombre de origen y\n");
+		printf("  otro de destino. Sirve para organizar archivos sin necesidad de\n");
+		printf("  recrearlos o copiarlos.\n");
+		printf("\nUso:\n  renombrar <origen> <destino> [--help]\n");
+		printf("\nNotas:\n");
+		printf("  - Si el destino existe, puede sobrescribirse segun el sistema.\n");
+		printf("  - Requiere permisos sobre ambos nombres.\n");
+		return 1;
+	}
+
 	if (args == NULL || args[1] == NULL || args[2] == NULL) {
 		fprintf(stderr, "Uso: renombrar <origen> <destino>\n");
 		return 1;
@@ -73,6 +112,19 @@ int comando_renombrar(char **args) {
 
 // Comando que busca texto (case-insensitive) dentro de un archivo.
 int comando_buscar(char **args) {
+	if (args != NULL && args[1] != NULL && strcmp(args[1], "--help") == 0) {
+		printf("buscar - Busca texto dentro de un archivo.\n");
+		printf("\nDescripcion:\n");
+		printf("  Recorre el archivo linea por linea y muestra aquellas que\n");
+		printf("  contienen el texto indicado, sin distinguir mayusculas de\n");
+		printf("  minusculas. Permite buscar frases con varias palabras.\n");
+		printf("\nUso:\n  buscar <texto...> <archivo> [--help]\n");
+		printf("\nNotas:\n");
+		printf("  - La busqueda no distingue mayusculas/minusculas.\n");
+		printf("  - Puede usar varias palabras en <texto...>.\n");
+		return 1;
+	}
+
 	if (args == NULL || args[1] == NULL || args[2] == NULL) {
 		fprintf(stderr, "Uso: buscar <texto...> <archivo>\n");
 		return 1;

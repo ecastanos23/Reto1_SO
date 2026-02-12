@@ -38,6 +38,18 @@ int ejecutar_comando(char **args) {
 
 // Muestra la lista de comandos disponibles con su descripcion.
 int cmd_ayuda(char **args) {
+    if (args[1] != NULL && strcmp(args[1], "--help") == 0) {
+        printf("ayuda - Muestra la lista de comandos disponibles.\n");
+        printf("\nDescripcion:\n");
+        printf("  Presenta un listado resumido de los comandos registrados en la\n");
+        printf("  shell junto con una breve descripcion. Es el punto de partida\n");
+        printf("  para descubrir funcionalidades y su ayuda detallada.\n");
+        printf("\nUso:\n  ayuda [--help]\n");
+        printf("\nNotas:\n");
+        printf("  - Use '<comando> --help' para ver ayuda detallada.\n");
+        return 1;
+    }
+
     (void)args;
     printf("\nComandos disponibles en EAFITos:\n");
     printf("--------------------------------\n");
