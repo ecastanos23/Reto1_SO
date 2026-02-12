@@ -8,6 +8,7 @@
 #include "commands.h"
 #include "utils.h"
 
+// Comando que lista el contenido del directorio actual.
 int cmd_listar(char **args) {
 	DIR *dir;
 	struct dirent *entry;
@@ -29,6 +30,7 @@ int cmd_listar(char **args) {
 	closedir(dir);
 	return 1;
 }
+// Comando que lee y muestra el contenido de un archivo de texto.
 int cmd_leer(char **args) {
     FILE *archivo;
     char buffer[1024];
@@ -56,6 +58,7 @@ int cmd_leer(char **args) {
     return 1;
 }
 
+// Comando que imprime la fecha y hora actual.
 int cmd_tiempo(char **args) {
     time_t ahora;
     struct tm *info_tiempo;
@@ -71,6 +74,7 @@ int cmd_tiempo(char **args) {
     return 1;
 }
 
+// Comando de calculadora basica con operador binario.
 int cmd_calc(char **args) {
     double num1, num2, resultado;
     char operador;
@@ -128,6 +132,7 @@ int cmd_calc(char **args) {
     return 1;
 }
 
+// Comando para salir del bucle principal de la shell.
 int cmd_salir(char **args) {
     (void)args;
     printf("Saliendo de EAFITos... ¡Hasta pronto!\n");

@@ -6,12 +6,14 @@
 #define MAX_ARGS 64
 #define DELIM " \t\r\n\a"
 
+// Tokeniza la linea de entrada en argumentos para el ejecutor de comandos.
 char **parsear_linea(char *linea) {
     int bufsize = MAX_ARGS;
     int posicion = 0;
     char **tokens = mm_malloc(bufsize * sizeof(char*));
     char *token;
 
+    // Segmenta usando delimitadores de espacio y control.
     token = strtok(linea, DELIM);
     while (token != NULL) {
         tokens[posicion] = token;

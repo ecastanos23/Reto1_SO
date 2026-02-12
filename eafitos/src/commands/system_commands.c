@@ -3,6 +3,7 @@
 #include "shell.h"
 #include "commands.h"
 
+// Tabla central que relaciona nombre, funcion y descripcion del comando.
 /* Tabla de comandos disponibles */
 Comando comandos[] = {
     {"listar", cmd_listar, "Lista los archivos del directorio actual"},
@@ -18,6 +19,7 @@ Comando comandos[] = {
     {NULL, NULL, NULL}
 };
 
+// Despacha la ejecucion al comando que coincide con el nombre ingresado.
 int ejecutar_comando(char **args) {
     if (args[0] == NULL) {
         return 1;
@@ -34,6 +36,7 @@ int ejecutar_comando(char **args) {
     return 1;
 }
 
+// Muestra la lista de comandos disponibles con su descripcion.
 int cmd_ayuda(char **args) {
     (void)args;
     printf("\nComandos disponibles en EAFITos:\n");

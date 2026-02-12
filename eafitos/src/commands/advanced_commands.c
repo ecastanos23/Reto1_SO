@@ -5,6 +5,7 @@
 #include "commands.h"
 #include "utils.h"
 
+// Comando que crea un archivo vacio en la ruta indicada.
 int comando_crear(char **args) {
 	if (args == NULL || args[1] == NULL) {
 		fprintf(stderr, "Uso: crear <archivo>\n");
@@ -26,6 +27,7 @@ int comando_crear(char **args) {
 
 // uso en ./EAFITos: crear <archivo>
 
+// Comando que elimina un archivo existente.
 int comando_eliminar(char **args) {
 	if (args == NULL || args[1] == NULL) {
 		fprintf(stderr, "Uso: eliminar <archivo>\n");
@@ -44,6 +46,7 @@ int comando_eliminar(char **args) {
 }
 //uso: eliminar <archivo>
 
+// Comando que renombra un archivo de origen a destino.
 int comando_renombrar(char **args) {
 	if (args == NULL || args[1] == NULL || args[2] == NULL) {
 		fprintf(stderr, "Uso: renombrar <origen> <destino>\n");
@@ -68,12 +71,14 @@ int comando_renombrar(char **args) {
 //uso: renombrar <original> <nuevo>
 
 
+// Comando que busca texto (case-insensitive) dentro de un archivo.
 int comando_buscar(char **args) {
 	if (args == NULL || args[1] == NULL || args[2] == NULL) {
 		fprintf(stderr, "Uso: buscar <texto...> <archivo>\n");
 		return 1;
 	}
 
+    // Detecta el ultimo argumento para separar texto y nombre de archivo.
 	int last = 0;
 	while (args[last] != NULL) {
 		last++;
@@ -84,6 +89,7 @@ int comando_buscar(char **args) {
 		return 1;
 	}
 
+    // Reconstruye el texto de busqueda a partir de los argumentos.
 	char *archivo_nombre = mm_strdup(args[last - 1]);
 	char *texto = mm_calloc(1, 1024);
 
@@ -102,6 +108,7 @@ int comando_buscar(char **args) {
 		return 1;
 	}
 
+    // Recorre el archivo y reporta las lineas que coinciden.
 	char linea[1024];
 	int numero_linea = 1;
 	int coincidencias = 0;

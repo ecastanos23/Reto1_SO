@@ -3,6 +3,7 @@
 
 #include "utils.h"
 
+// Utilidades de texto para operaciones con mayusculas/minusculas.
 char *helpers_strdup_lower(const char *s) {
 	if (s == NULL) {
 		return NULL;
@@ -17,6 +18,7 @@ char *helpers_strdup_lower(const char *s) {
 	return out;
 }
 
+// Busca una subcadena sin distinguir mayusculas/minusculas.
 int helpers_contains_case_insensitive(const char *haystack, const char *needle) {
 	if (haystack == NULL || needle == NULL || needle[0] == '\0') {
 		return 0;
