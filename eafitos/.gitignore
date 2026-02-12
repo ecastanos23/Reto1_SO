@@ -1,6 +1,5 @@
 *.o
 build/
+bin/
 shell_exec
-eafitos/build/
-eafitos/bin/
-eafitos/EAFITos
+EAFITos
