@@ -33,6 +33,7 @@ int ejecutar_comando(char **args) {
 
     fprintf(stderr, "Comando no reconocido: %s\n", args[0]);
     fprintf(stderr, "Escribe 'ayuda' para ver los comandos disponibles.\n");
+
     return 1;
 }
 
