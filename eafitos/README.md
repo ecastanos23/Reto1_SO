@@ -76,7 +76,6 @@ eafitos/
 │   │   └── parser.c            # Tokenización y análisis de comandos
 │   ├── commands/               # Lógica de Comandos (Funcionalidades)
 │   │   ├── basic_commands.c    # 6 comandos obligatorios (ayuda, salir, etc.)
-│   │   ├── file_commands.c     # Gestión de archivos (crear, eliminar)
 │   │   ├── system_commands.c   # Interacción con el entorno del SO
 │   │   └── advanced_commands.c # Comandos complejos (buscar, renombrar)
 │   └── utils/                  # Servicios de Soporte
